@@ -8,6 +8,7 @@
  */
 
 const http = require("http");
+const handdleReqRes = require('./helpers/handleReqRes')
 const url = require('url');
 const {StringDecoder} = require('string_decoder'); 
 
@@ -18,37 +19,13 @@ app.config = {
 };
 
 app.ServerCreate = () => {
-  const server = http.createServer(app.handleReqRes);
+  const server = http.createServer(app.handdleReqRes);
   server.listen(app.config.port, () => {
     console.log(`listening port from ${app.config.port}`);
   });
 };
 
-app.handleReqRes = (req, res) => {
-  // res.end("Hello World ! From Muhid");
-  const parsedUrl = url.parse(req.url, true);
-  const path = parsedUrl.pathname;
-  const treamPath = path.replace(/^\/+|\/+$/g,'');
-  const method=req.method.toLowerCase();
-  const queryStringObject = parsedUrl.query;
-  const headersObject = req.headers;
-  const decoder = new StringDecoder('utf-8');
-  let realData='';
+app.handdleReqRes = handdleReqRes.handdleReqRes;
 
-  req.on('data', (buffer)=>{
-    realData += decoder.write(buffer);
-
-  });
-  req.on('end', ()=>{
-    realData += decoder.end();
-    console.log(realData);
-    console.log('hello muhit bhai');
-    res.end(realData);
-
-
-  });
-
-
-};
 app.ServerCreate();
-
+console.log(app);
