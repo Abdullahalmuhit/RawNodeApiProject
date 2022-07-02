@@ -28,4 +28,3 @@ app.ServerCreate = () => {
 app.handdleReqRes = handdleReqRes.handdleReqRes;
 
 app.ServerCreate();
-console.log(app);

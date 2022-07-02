@@ -8,8 +8,11 @@
  */
 
 const {sampleHandler} = require('./handlers/routeHandlers/sampleHandler')
+const { testHandler } = require('./handlers/routeHandlers/testHandler');
+
 const routes={
     sample : sampleHandler,
+    test : testHandler,
 }
 
 module.exports=routes;
