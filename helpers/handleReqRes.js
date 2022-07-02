@@ -35,7 +35,7 @@ const {notFoundHandler} = require('./handlers/routeHandlers/notFoundHandler');
 
     const decoder = new StringDecoder('utf-8');
     let realData='';
-    const chosenHandler = routes[treamPath] ? treamPath : notFoundHandler;
+    const chosenHandler = routes[treamPath] ? routes[treamPath] : notFoundHandler;
 
     chosenHandler(requestProperties, (statusCode, payload)=>{
       typeof(statusCode) === 'number' ? statusCode : '500';
