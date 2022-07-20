@@ -11,6 +11,8 @@ const http = require("http");
 const handdleReqRes = require('./helpers/handleReqRes')
 const url = require('url');
 const {StringDecoder} = require('string_decoder'); 
+const environment = require('./helpers/handlers/environments');
+
 
 const app = {};
 
@@ -20,8 +22,8 @@ app.config = {
 
 app.ServerCreate = () => {
   const server = http.createServer(app.handdleReqRes);
-  server.listen(app.config.port, () => {
-    console.log(`listening port from ${app.config.port}`);
+  server.listen(environment.port, () => {
+    console.log(`listening port from ${environment.port}`);
   });
 };
 
